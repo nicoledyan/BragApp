@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brag. - Your wins deserve to be remembered</title>
+  <link rel="icon" type="image/png" href="images/icon.png" />
+  <link rel="apple-touch-icon" href="images/icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #FAF7F0;
+      --blush:    #EDBFBF;
+      --sky:      #B4D9E2;
+      --sage:     #557855;
+      --forest:   #1E301E;
+      --gold:     #C8A050;
+      --warm:     #F2E8CB;
+      --rose:     #C49090;
+      --teal:     #4A98A8;
+      --night:    #0A1020;
+      --starblue: #1a2545;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--forest);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─────────────────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      background: rgba(250, 247, 240, 0.85);
+      border-bottom: 1px solid rgba(196, 144, 144, 0.15);
+      transition: all 0.4s ease;
+    }
+    nav.dark-nav {
+      background: rgba(10, 16, 32, 0.85);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .nav-logo {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .nav-logo img {
+      height: 28px;
+      width: auto;
+      transition: filter 0.4s;
+    }
+    nav.dark-nav .nav-logo img { filter: invert(1); }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--forest);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.2s, color 0.4s;
+    }
+    nav.dark-nav .nav-links a { color: #fff; }
+    .nav-links a:hover { opacity: 1; }
+    .nav-cta {
+      background: var(--forest);
+      color: #fff !important;
+      opacity: 1 !important;
+      padding: 8px 20px;
+      border-radius: 100px;
+      font-weight: 600 !important;
+      transition: transform 0.2s, background 0.2s !important;
+    }
+    nav.dark-nav .nav-cta { background: var(--gold); color: var(--night) !important; }
+    .nav-cta:hover { transform: translateY(-1px); }
+
+    /* ─── HERO ─────────────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
+      padding: 96px 24px 72px;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(160deg, #FAF7F0 0%, #F2E8CB 40%, #EDBFBF 80%, #B4D9E2 100%);
+    }
+
+    /* floating blobs */
+    .hero::before, .hero::after {
+      content: '';
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      animation: blobFloat 8s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hero::before {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(237,191,191,0.5) 0%, transparent 70%);
+      top: -100px; right: -100px;
+    }
+    .hero::after {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(180,217,226,0.5) 0%, transparent 70%);
+      bottom: -100px; left: -100px;
+      animation-delay: -4s;
+    }
+
+    @keyframes blobFloat {
+      0%, 100% { transform: translate(0,0) scale(1); }
+      33%       { transform: translate(30px,-20px) scale(1.05); }
+      66%       { transform: translate(-20px,30px) scale(0.97); }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(196,144,144,0.3);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--rose);
+      margin-bottom: 22px;
+      animation: fadeUp 0.8s ease both;
+    }
+    .hero-badge .dot {
+      width: 6px; height: 6px;
+      background: var(--rose);
+      border-radius: 50%;
+      animation: pulse 2s ease infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.6; transform: scale(0.8); }
+    }
+
+    .hero-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(44px, 7vw, 76px);
+      font-weight: 700;
+      line-height: 1.0;
+      color: var(--forest);
+      margin-bottom: 12px;
+      animation: fadeUp 0.8s ease 0.1s both;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--rose);
+    }
+    .hero-title .shimmer-text {
+      background: linear-gradient(135deg, var(--forest) 30%, var(--rose) 50%, var(--teal) 70%, var(--forest) 90%);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s ease-in-out infinite;
+    }
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50%       { background-position: 100% 50%; }
+    }
+
+    .hero-subtitle {
+      font-size: clamp(17px, 2vw, 21px);
+      font-weight: 300;
+      color: var(--forest);
+      opacity: 0.7;
+      max-width: 560px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      animation: fadeUp 0.8s ease 0.2s both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 34px;
+      animation: fadeUp 0.8s ease 0.3s both;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--forest);
+      color: #fff;
+      padding: 16px 32px;
+      border-radius: 100px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(30,48,30,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(30,48,30,0.4);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+      color: var(--forest);
+      padding: 16px 28px;
+      border-radius: 100px;
+      font-size: 16px;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1.5px solid rgba(30,48,30,0.15);
+      transition: transform 0.2s, background 0.2s;
+    }
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.9);
+    }
+
+    /* product screenshot */
+    .hero-product {
+      position: relative;
+      width: min(280px, 78vw);
+      margin: 0 auto;
+      animation: fadeUp 0.8s ease 0.4s both;
+    }
+    .mini-icon img, .showcase-icon img, .cta-icon img {
+      display: block;
+    }
+    .screenshot-frame {
+      position: relative;
+      width: 100%;
+      background: var(--forest);
+      border-radius: 34px;
+      padding: 8px;
+      box-shadow: 0 20px 60px rgba(30,48,30,0.35), 0 4px 16px rgba(0,0,0,0.15);
+      overflow: hidden;
+    }
+    .screenshot-frame img {
+      display: block;
+      width: 100%;
+      border-radius: 26px;
+    }
+    .hero-note {
+      position: absolute;
+      left: -42px;
+      bottom: 70px;
+      max-width: 142px;
+      background: rgba(255,255,255,0.88);
+      border: 1.5px solid rgba(196,144,144,0.25);
+      border-radius: 18px;
+      padding: 10px 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.09);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.35;
+      color: var(--forest);
+      text-align: left;
+    }
+    .hero-note.right {
+      left: auto;
+      right: -46px;
+      top: 92px;
+      bottom: auto;
+    }
+
+@keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* scroll hint */
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--forest);
+      opacity: 0.4;
+      animation: fadeUp 1s ease 1.5s both;
+    }
+    .scroll-hint .arrow {
+      width: 20px; height: 20px;
+      border-right: 2px solid currentColor;
+      border-bottom: 2px solid currentColor;
+      transform: rotate(45deg);
+      animation: bounceDown 1.5s ease-in-out infinite;
+    }
+    @keyframes bounceDown {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50%       { transform: rotate(45deg) translateY(5px); }
+    }
+
+    /* ─── MARQUEE ───────────────────────────────────────────────────────── */
+    .marquee-section {
+      background: var(--forest);
+      padding: 20px 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 48px;
+      white-space: nowrap;
+      animation: marquee 20s linear infinite;
+    }
+    .marquee-track.reverse { animation-direction: reverse; }
+    .marquee-item {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 300;
+      font-style: italic;
+      color: rgba(255,255,255,0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 16px;
+      flex-shrink: 0;
+    }
+    .marquee-item .sep {
+      color: var(--gold);
+      font-style: normal;
+      font-size: 14px;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ─── SECTION SHARED ─────────────────────────────────────────────── */
+    section { position: relative; }
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .section-body {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 1.7;
+      opacity: 0.7;
+      max-width: 540px;
+    }
+
+    /* reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ─── WHY BRAG ──────────────────────────────────────────────────── */
+    .why-section {
+      padding: 120px 0;
+      background: var(--cream);
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 80px;
+    }
+    .why-visual {
+      position: relative;
+    }
+    .why-screenshot {
+      position: relative;
+      width: min(260px, 82vw);
+      margin: 0 auto;
+    }
+
+    /* stats floater */
+    .stat-pill {
+      position: absolute;
+      background: white;
+      border-radius: 100px;
+      padding: 8px 16px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--forest);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      border: 1.5px solid rgba(237,191,191,0.3);
+    }
+    .stat-pill.p1 { bottom: 20px; right: -10px; animation: floatPill 4s ease-in-out infinite; }
+    .stat-pill.p2 { top: 20px; right: -30px; animation: floatPill 4s ease-in-out infinite reverse; }
+    @keyframes floatPill {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-8px); }
+    }
+
+    .why-content { padding-left: 40px; }
+
+    /* ─── FEATURES ─────────────────────────────────────────────────── */
+    .features-section {
+      padding: 120px 0;
+      background: linear-gradient(180deg, var(--cream) 0%, var(--warm) 100%);
+    }
+    .features-title-row {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .feature-card {
+      background: rgba(255,255,255,0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 24px;
+      padding: 36px 28px;
+      border: 1.5px solid rgba(237,191,191,0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(237,191,191,0.08) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    }
+    .feature-card.tall { grid-row: span 2; }
+    .feature-emoji { font-size: 36px; margin-bottom: 16px; display: block; }
+    .feature-name {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--forest);
+    }
+    .feature-desc {
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--forest);
+      opacity: 0.65;
+    }
+
+    /* big feature highlight */
+    .feature-card.highlight {
+      background: var(--forest);
+      border-color: transparent;
+      color: white;
+    }
+    .feature-card.highlight .feature-name,
+    .feature-card.highlight .feature-desc { color: white; }
+    .feature-card.highlight .feature-desc { opacity: 0.7; }
+    .feature-card.highlight::before {
+      background: linear-gradient(135deg, rgba(200,160,80,0.15) 0%, transparent 60%);
+    }
+
+    /* mini icon grid inside feature card */
+    .mini-bag {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 6px;
+      margin-top: 20px;
+    }
+    .mini-icon {
+      width: 40px; height: 40px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: transform 0.3s ease;
+    }
+    .feature-card:hover .mini-icon {
+      animation: miniPop 0.4s ease forwards;
+    }
+    .mini-icon:nth-child(1)  { animation-delay: 0.0s; }
+    .mini-icon:nth-child(2)  { animation-delay: 0.05s; }
+    .mini-icon:nth-child(3)  { animation-delay: 0.1s; }
+    .mini-icon:nth-child(4)  { animation-delay: 0.15s; }
+    .mini-icon:nth-child(5)  { animation-delay: 0.2s; }
+    .mini-icon:nth-child(6)  { animation-delay: 0.25s; }
+    .mini-icon:nth-child(7)  { animation-delay: 0.3s; }
+    .mini-icon:nth-child(8)  { animation-delay: 0.35s; }
+    .mini-icon:nth-child(9)  { animation-delay: 0.4s; }
+    .mini-icon:nth-child(10) { animation-delay: 0.45s; }
+    @keyframes miniPop {
+      0%   { transform: scale(1); }
+      40%  { transform: scale(1.2); }
+      100% { transform: scale(1.05); }
+    }
+    .mini-icon.special {
+      background: rgba(200,160,80,0.25);
+      border-color: rgba(200,160,80,0.4);
+    }
+
+    /* ai pulse */
+    .ai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(200,160,80,0.2);
+      border: 1px solid rgba(200,160,80,0.4);
+      border-radius: 100px;
+      padding: 4px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--gold);
+      margin-top: 16px;
+    }
+    .ai-dot {
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 1.5s ease infinite;
+    }
+
+    /* ─── HOW IT WORKS ────────────────────────────────────────────── */
+    .how-section {
+      padding: 120px 0;
+      background: var(--warm);
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-top: 64px;
+    }
+    .step {
+      text-align: center;
+      padding: 32px 20px;
+      background: rgba(255,255,255,0.6);
+      border-radius: 24px;
+      border: 1.5px solid rgba(237,191,191,0.3);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .step:hover { transform: translateY(-4px); }
+    .step-num {
+      font-family: 'Fraunces', serif;
+      font-size: 48px;
+      font-weight: 700;
+      color: var(--blush);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+    .step-icon { font-size: 32px; margin-bottom: 12px; display: block; }
+    .step-title {
+      font-family: 'Fraunces', serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--forest);
+      margin-bottom: 8px;
+    }
+    .step-desc { font-size: 14px; line-height: 1.6; color: var(--forest); opacity: 0.6; }
+
+    /* connector arrow */
+    .step::after {
+      content: '→';
+      position: absolute;
+      right: -22px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      color: var(--blush);
+      opacity: 0.6;
+    }
+    .step:last-child::after { display: none; }
+
+    /* ─── RARITY SECTION ─────────────────────────────────────────── */
+    .rarity-section {
+      padding: 120px 0;
+      background: linear-gradient(160deg, var(--forest) 0%, #0a1a0a 50%, var(--starblue) 100%);
+      color: white;
+      overflow: hidden;
+    }
+    .rarity-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .rarity-section .section-title { color: white; }
+    .rarity-section .section-label { color: var(--gold); opacity: 0.9; }
+    .rarity-section .section-body { color: rgba(255,255,255,0.65); }
+
+    .stars-bg {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .star {
+      position: absolute;
+      border-radius: 50%;
+      background: white;
+      animation: twinkle var(--d, 3s) ease-in-out infinite var(--delay, 0s);
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: var(--min, 0.1); transform: scale(1); }
+      50%       { opacity: var(--max, 0.8); transform: scale(1.3); }
+    }
+
+    /* icon showcase grid */
+    .icon-showcase {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+    }
+    .showcase-icon {
+      aspect-ratio: 1;
+      border-radius: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      position: relative;
+      transition: transform 0.3s ease;
+      cursor: default;
+    }
+    .showcase-icon:hover { transform: scale(1.15) rotate(-3deg); }
+    .showcase-icon.common {
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.1);
+    }
+    .showcase-icon.special {
+      background: rgba(200,160,80,0.15);
+      border: 1.5px solid rgba(200,160,80,0.4);
+    }
+    .showcase-icon.special::after {
+      content: '✦';
+      position: absolute;
+      top: -5px; right: -5px;
+      font-size: 10px;
+      color: var(--gold);
+    }
+    .rarity-legend {
+      display: flex;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .rarity-dot {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: rgba(255,255,255,0.6);
+    }
+    .rarity-dot .d {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+    }
+    .rarity-dot .d.common { background: rgba(255,255,255,0.4); }
+    .rarity-dot .d.special { background: var(--gold); }
+
+    /* ─── TESTIMONIALS ────────────────────────────────────────────── */
+    .testimonials-section {
+      padding: 120px 0;
+      background: linear-gradient(180deg, var(--cream) 0%, #F2E8CB 100%);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+    }
+    .testimonial {
+      background: white;
+      border-radius: 24px;
+      padding: 32px;
+      border: 1.5px solid rgba(237,191,191,0.3);
+      position: relative;
+    }
+    .testimonial::before {
+      content: '"';
+      position: absolute;
+      top: 16px; left: 24px;
+      font-family: 'Fraunces', serif;
+      font-size: 64px;
+      color: var(--blush);
+      line-height: 1;
+      opacity: 0.6;
+    }
+    .testimonial-text {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--forest);
+      opacity: 0.8;
+      padding-top: 20px;
+      font-style: italic;
+    }
+    .testimonial-author {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+    }
+    .author-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--forest);
+    }
+    .author-role {
+      font-size: 12px;
+      color: var(--forest);
+      opacity: 0.5;
+    }
+    .stars-row { display: flex; gap: 3px; margin-bottom: 4px; }
+    .stars-row span { font-size: 14px; }
+
+    /* ─── PRICING ─────────────────────────────────────────────────── */
+    .pricing-section {
+      padding: 120px 0;
+      background: var(--warm);
+      color: var(--forest);
+      text-align: center;
+    }
+    .pricing-section .section-title { color: var(--forest); }
+    .pricing-section .section-label { color: var(--rose); opacity: 1; }
+    .pricing-trial-note {
+      font-size: 16px;
+      color: rgba(30,48,30,0.55);
+      margin-top: 12px;
+      margin-bottom: 56px;
+    }
+    .pricing-trial-note strong { color: var(--forest); font-weight: 600; }
+    .pricing-cards {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .pricing-card {
+      flex: 1;
+      min-width: 260px;
+      max-width: 320px;
+      background: rgba(255,255,255,0.7);
+      border: 1.5px solid rgba(196,144,144,0.25);
+      border-radius: 28px;
+      padding: 36px 32px;
+      text-align: left;
+      position: relative;
+      transition: transform 0.3s ease, background 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    }
+    .pricing-card.featured {
+      border-color: var(--gold);
+      background: var(--forest);
+    }
+    .pricing-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gold);
+      color: var(--night);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 14px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .pricing-period {
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(30,48,30,0.45);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+    .pricing-card.featured .pricing-period { color: rgba(255,255,255,0.45); }
+    .pricing-amount {
+      font-family: 'Fraunces', serif;
+      font-size: 52px;
+      font-weight: 700;
+      color: var(--forest);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .pricing-card.featured .pricing-amount { color: white; }
+    .pricing-amount sup {
+      font-size: 24px;
+      font-weight: 400;
+      vertical-align: super;
+      margin-right: 2px;
+    }
+    .pricing-amount sub {
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(30,48,30,0.45);
+      vertical-align: baseline;
+    }
+    .pricing-card.featured .pricing-amount sub { color: rgba(255,255,255,0.45); }
+    .pricing-equiv {
+      font-size: 13px;
+      color: var(--gold);
+      margin-bottom: 28px;
+      min-height: 18px;
+    }
+    .pricing-divider {
+      border: none;
+      border-top: 1px solid rgba(30,48,30,0.1);
+      margin-bottom: 24px;
+    }
+    .pricing-card.featured .pricing-divider { border-top-color: rgba(255,255,255,0.1); }
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      flex: 1;
+    }
+    .pricing-features li {
+      font-size: 14px;
+      color: rgba(30,48,30,0.7);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.7); }
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+    .pricing-cta {
+      display: block;
+      margin-top: 28px;
+      text-align: center;
+      padding: 14px 24px;
+      border-radius: 100px;
+      font-size: 15px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .pricing-cta:hover { transform: translateY(-2px); opacity: 0.9; }
+    .pricing-card.featured .pricing-cta {
+      background: var(--gold);
+      color: var(--night);
+    }
+    .pricing-card:not(.featured) .pricing-cta {
+      background: rgba(30,48,30,0.08);
+      color: var(--forest);
+      border: 1.5px solid rgba(30,48,30,0.15);
+    }
+    .pricing-guarantee {
+      margin-top: 40px;
+      font-size: 13px;
+      color: rgba(30,48,30,0.4);
+    }
+
+    /* ─── CTA ─────────────────────────────────────────────────────── */
+    .cta-section {
+      padding: 120px 24px;
+      text-align: center;
+      background: var(--forest);
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 800px 400px at 20% 50%, rgba(180,217,226,0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 600px 600px at 80% 50%, rgba(200,160,80,0.08) 0%, transparent 60%);
+    }
+    .cta-inner { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+    .cta-section .section-title { color: white; }
+    .cta-section .section-label { color: var(--gold); opacity: 0.9; }
+    .cta-sub {
+      font-size: 18px;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 48px;
+      line-height: 1.6;
+    }
+    .app-store-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      background: white;
+      color: var(--forest);
+      padding: 16px 32px;
+      border-radius: 18px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .app-store-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+    .app-store-icon { width: 44px; height: 44px; border-radius: 10px; flex-shrink: 0; }
+    .app-store-text { text-align: left; }
+    .app-store-text small { display: block; font-size: 11px; opacity: 0.5; font-weight: 400; }
+    .app-store-text strong { display: block; font-size: 18px; font-weight: 700; }
+
+    /* floating icon waft */
+    .cta-icons {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .cta-icon {
+      width: 60px; height: 60px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      animation: waft 3s ease-in-out infinite;
+    }
+    .cta-icon:nth-child(1) { animation-delay: 0.0s; }
+    .cta-icon:nth-child(2) { animation-delay: 0.3s; }
+    .cta-icon:nth-child(3) { animation-delay: 0.6s; }
+    .cta-icon:nth-child(4) { animation-delay: 0.9s; }
+    .cta-icon:nth-child(5) { animation-delay: 1.2s; }
+    @keyframes waft {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────────────── */
+    footer {
+      background: var(--night);
+      color: rgba(255,255,255,0.4);
+      padding: 40px 24px;
+      text-align: center;
+      font-size: 13px;
+    }
+    footer a { color: rgba(255,255,255,0.5); text-decoration: none; }
+    footer a:hover { color: white; }
+    .footer-logo {
+      margin-bottom: 16px;
+    }
+    .footer-logo img {
+      height: 28px;
+      width: auto;
+      filter: invert(1);
+      opacity: 0.6;
+    }
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      margin: 16px 0;
+      flex-wrap: wrap;
+    }
+    .footer-attribution {
+      max-width: 680px;
+      margin: 16px auto 0;
+      line-height: 1.6;
+    }
+    .footer-attribution a {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* ─── RESPONSIVE ─────────────────────────────────────────────── */
+    @media (max-width: 768px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .why-grid, .rarity-inner { grid-template-columns: 1fr; gap: 40px; }
+      .why-content { padding-left: 0; }
+      .feature-cards { grid-template-columns: 1fr; }
+      .feature-card.tall { grid-row: span 1; }
+      .steps { grid-template-columns: 1fr 1fr; }
+      .step::after { display: none; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .hero-product { width: min(240px, 78vw); }
+      .hero-note { left: -20px; bottom: 52px; transform: scale(0.9); }
+      .hero-note.right { right: -22px; top: 78px; }
+    }
+    @media (max-width: 480px) {
+      .steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── NAV ──────────────────────────────────────────────────────────── -->
+<nav id="main-nav">
+  <a href="#top" class="nav-logo">
+    <img src="images/sharelogo.png" alt="Brag" />
+  </a>
+  <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#how">How it works</a>
+    <a href="#collection">Brag Bag</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#download" class="nav-cta">Beta access</a>
+  </div>
+</nav>
+
+<!-- ─── HERO ──────────────────────────────────────────────────────────── -->
+<section class="hero" id="top">
+  <div class="hero-badge">
+    <div class="dot"></div>
+    iPhone and iPad beta in testing
+  </div>
+
+  <h1 class="hero-title">
+    Your wins deserve<br>
+    to be <em class="shimmer-text">remembered</em>
+  </h1>
+
+  <p class="hero-subtitle">
+    <em>Brag.</em> A tiny place to keep the proof that you are, in fact, doing things. Log wins big and small, earn icons, and build a collection worth opening every day.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#download" class="btn-primary">
+      <span>→</span> Ask about beta access
+    </a>
+    <a href="#features" class="btn-secondary">
+      See how it works
+    </a>
+  </div>
+
+  <div class="hero-product">
+    <div class="screenshot-frame">
+      <img src="images/brag-bag-screen.jpeg" alt="Brag Bag screen showing collected win icons" />
+    </div>
+    <div class="hero-note">Collect icons for every win</div>
+    <div class="hero-note right">Watch your wins add up</div>
+  </div>
+
+  <div class="scroll-hint">
+    <div class="arrow"></div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ────────────────────────────────────────────────────── -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item">shipped it early <span class="sep">✦</span></span>
+    <span class="marquee-item">nailed the presentation <span class="sep">✦</span></span>
+    <span class="marquee-item">showed up for someone I love <span class="sep">✦</span></span>
+    <span class="marquee-item">closed the deal <span class="sep">✦</span></span>
+    <span class="marquee-item">ran further than ever before <span class="sep">✦</span></span>
+    <span class="marquee-item">learned something new <span class="sep">✦</span></span>
+    <span class="marquee-item">got the promotion <span class="sep">✦</span></span>
+    <span class="marquee-item">kept my word to myself <span class="sep">✦</span></span>
+    <span class="marquee-item">shipped it early <span class="sep">✦</span></span>
+    <span class="marquee-item">nailed the presentation <span class="sep">✦</span></span>
+    <span class="marquee-item">showed up for someone I love <span class="sep">✦</span></span>
+    <span class="marquee-item">closed the deal <span class="sep">✦</span></span>
+    <span class="marquee-item">ran further than ever before <span class="sep">✦</span></span>
+    <span class="marquee-item">learned something new <span class="sep">✦</span></span>
+    <span class="marquee-item">got the promotion <span class="sep">✦</span></span>
+    <span class="marquee-item">kept my word to myself <span class="sep">✦</span></span>
+  </div>
+</div>
+
+<!-- ─── WHY BRAG ──────────────────────────────────────────────────── -->
+<section class="why-section">
+  <div class="section-inner">
+    <div class="why-grid">
+      <div class="why-visual reveal">
+        <div class="why-screenshot">
+          <div class="screenshot-frame">
+            <img src="images/brag-book-screen.jpeg" alt="Brag Book screen showing saved wins" />
+          </div>
+          <div class="stat-pill p1">42 wins logged</div>
+          <div class="stat-pill p2">Your wins, saved</div>
+        </div>
+      </div>
+
+      <div class="why-content">
+        <p class="section-label reveal">The problem with being great</p>
+        <h2 class="section-title reveal reveal-delay-1">
+          You forget your<br>own <em style="font-style:italic; color: var(--rose);">brilliance</em>
+        </h2>
+        <p class="section-body reveal reveal-delay-2">
+          You nailed a presentation, ran your furthest ever, showed up for someone who needed you - and two weeks later? Gone. Buried under the next thing. <em>Brag.</em> gives those moments somewhere to live.
+        </p>
+        <p class="section-body reveal reveal-delay-3" style="margin-top: 16px;">
+          Work wins, life wins, weird little personal victories - when you need a reminder that you're doing better than you think, it's all right there.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FEATURES ─────────────────────────────────────────────────── -->
+<section class="features-section" id="features">
+  <div class="section-inner">
+    <div class="features-title-row">
+      <p class="section-label reveal">Features</p>
+      <h2 class="section-title reveal reveal-delay-1">Everything you need to<br>collect your wins</h2>
+    </div>
+
+    <div class="feature-cards">
+
+      <!-- AI tagging -->
+      <div class="feature-card reveal">
+        <span class="feature-emoji">✨</span>
+        <h3 class="feature-name">Smart tagging</h3>
+        <p class="feature-desc">Type your win the way you'd say it to a friend. <em>Brag</em>'s AI suggests the skills, categories, and themes hiding inside it.</p>
+      </div>
+
+      <!-- Brag Bag collect -->
+      <div class="feature-card highlight tall reveal reveal-delay-1">
+        <span class="feature-emoji">🛍️</span>
+        <h3 class="feature-name">Your Brag Bag</h3>
+        <p class="feature-desc">Every win earns an icon. Over time, your Brag Bag turns into a weirdly satisfying record of what you've done.</p>
+        <div class="mini-bag">
+          <div class="mini-icon"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/rocket.svg" alt="rocket" style="width:24px;height:24px;object-fit:contain;"></div>
+          <div class="mini-icon special"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/crown.svg" alt="crown" style="width:24px;height:24px;object-fit:contain;"></div>
+          <div class="mini-icon"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/crystal-ball.svg" alt="crystal-ball" style="width:24px;height:24px;object-fit:contain;"></div>
+          <div class="mini-icon"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/blossom.svg" alt="blossom" style="width:24px;height:24px;object-fit:contain;"></div>
+          <div class="mini-icon"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/high-voltage.svg" alt="high-voltage" style="width:24px;height:24px;object-fit:contain;"></div>
+          <div class="mini-icon"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/tulip.svg" alt="tulip" style="width:24px;height:24px;object-fit:contain;"></div>
+          <div class="mini-icon special"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/sparkles.svg" alt="sparkles" style="width:24px;height:24px;object-fit:contain;"></div>
+          <div class="mini-icon"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/bar-chart.svg" alt="bar-chart" style="width:24px;height:24px;object-fit:contain;"></div>
+          <div class="mini-icon"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/herb.svg" alt="herb" style="width:24px;height:24px;object-fit:contain;"></div>
+          <div class="mini-icon"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/direct-hit.svg" alt="direct-hit" style="width:24px;height:24px;object-fit:contain;"></div>
+        </div>
+        <div class="rarity-legend">
+          <div class="rarity-dot"><div class="d common"></div> Common icons</div>
+          <div class="rarity-dot"><div class="d special"></div> Special icons</div>
+        </div>
+      </div>
+
+      <!-- Insights -->
+      <div class="feature-card reveal reveal-delay-2">
+        <span class="feature-emoji">🌱</span>
+        <h3 class="feature-name">Weekly insights</h3>
+        <p class="feature-desc">Get a recap of the week you actually had, with the patterns and strengths that are easy to miss while you're living it.</p>
+      </div>
+
+      <!-- Performance review -->
+      <div class="feature-card reveal reveal-delay-3">
+        <span class="feature-emoji">📝</span>
+        <h3 class="feature-name">Your Brag Sheet</h3>
+        <p class="feature-desc">Turn your wins into talking points for performance reviews, 1:1s, interviews, or the days you forget your own receipts.</p>
+      </div>
+
+      <!-- Streak + notifications -->
+      <div class="feature-card reveal reveal-delay-1">
+        <span class="feature-emoji">🔥</span>
+        <h3 class="feature-name">Streaks and nudges</h3>
+        <p class="feature-desc">Build the habit with streak tracking and a gentle evening nudge, because you probably did something worth saving today.</p>
+      </div>
+
+      <!-- Import -->
+      <div class="feature-card reveal reveal-delay-2">
+        <span class="feature-emoji">📥</span>
+        <h3 class="feature-name">Import your history</h3>
+        <p class="feature-desc">Already keeping wins in a spreadsheet? Bring them with you. <em>Brag.</em> helps fill in icons, tags, and insights automatically.</p>
+      </div>
+
+      <!-- Siri -->
+      <div class="feature-card reveal reveal-delay-3">
+        <span class="feature-emoji">🎙️</span>
+        <h3 class="feature-name">Log wins with Siri</h3>
+        <p class="feature-desc">Hands full? Say the win out loud. Siri can send it to <em>Brag.</em> without making you stop what you're doing.</p>
+      </div>
+
+      <!-- Widget -->
+      <div class="feature-card reveal reveal-delay-4">
+        <span class="feature-emoji">📱</span>
+        <h3 class="feature-name">Home screen widget</h3>
+        <p class="feature-desc">Put a recent win on your home screen, right where future-you can run into it on a very normal Tuesday.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ──────────────────────────────────────────────── -->
+<section class="how-section" id="how">
+  <div class="section-inner">
+    <div style="text-align:center; margin-bottom: 0;">
+      <p class="section-label reveal">How it works</p>
+      <h2 class="section-title reveal reveal-delay-1">From win to icon<br>in seconds</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-num">01</div>
+        <span class="step-icon">✍️</span>
+        <h3 class="step-title">Log your win</h3>
+        <p class="step-desc">Write a quick note about what happened. Short or detailed both work.</p>
+      </div>
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">02</div>
+        <span class="step-icon">🪄</span>
+        <h3 class="step-title">Brag tags it</h3>
+        <p class="step-desc">It suggests skill tags and a category, so your wins are easier to find later.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">03</div>
+        <span class="step-icon">🎁</span>
+        <h3 class="step-title">Earn an icon</h3>
+        <p class="step-desc">A fitting icon drops into your Brag Bag. Common or special, it becomes part of the collection.</p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">04</div>
+        <span class="step-icon">☀️</span>
+        <h3 class="step-title">See yourself grow</h3>
+        <p class="step-desc">Weekly insights show the strengths you keep using, even when you forgot to notice.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RARITY SECTION ────────────────────────────────────────────── -->
+<section class="rarity-section" id="collection">
+  <div class="stars-bg" id="stars-bg"></div>
+  <div class="section-inner">
+    <div class="rarity-inner">
+      <div>
+        <p class="section-label reveal">The Brag Bag collection</p>
+        <h2 class="section-title reveal reveal-delay-1">A collection that grows<br>every time you do.</h2>
+        <p class="section-body reveal reveal-delay-2">
+          Every entry earns an icon picked to fit the win. Some icons get a little extra shimmer when they show up.
+        </p>
+        <p class="section-body reveal reveal-delay-3" style="margin-top: 16px;">
+          Keep logging and your collection starts to tell the story back to you.
+        </p>
+        <div class="rarity-legend" style="margin-top: 32px;">
+          <div class="rarity-dot"><div class="d common"></div> Common</div>
+          <div class="rarity-dot"><div class="d special"></div> Special</div>
+        </div>
+      </div>
+      <div class="icon-showcase reveal reveal-delay-1">
+        <div class="showcase-icon common"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/seedling.svg" alt="seedling" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon special"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/sparkling-heart.svg" alt="sparkling-heart" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon common"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/crystal-ball.svg" alt="crystal-ball" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon common"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/rocket.svg" alt="rocket" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon special"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/sparkles.svg" alt="sparkles" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon common"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/direct-hit.svg" alt="direct-hit" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon common"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/bar-chart.svg" alt="bar-chart" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon special"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/tulip.svg" alt="tulip" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon common"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/high-voltage.svg" alt="high-voltage" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon common"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/herb.svg" alt="herb" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon common"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/artist-palette.svg" alt="artist-palette" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon special"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/star-struck.svg" alt="star-struck" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon common"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/magnifying-glass.svg" alt="magnifying-glass" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon common"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/musical-note.svg" alt="musical-note" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon special"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/rainbow.svg" alt="rainbow" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon common"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/green-book.svg" alt="green-book" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon common"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/locked-with-key.svg" alt="locked-with-key" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon special"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/crown.svg" alt="crown" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon common"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/running-shoe.svg" alt="running-shoe" style="width:60%;height:60%;object-fit:contain;"></div>
+        <div class="showcase-icon common"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/blossom.svg" alt="blossom" style="width:60%;height:60%;object-fit:contain;"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ─── TESTIMONIALS ─────────────────────────────────────────────── -->
+<section class="testimonials-section" id="reviews" hidden>
+  <div class="section-inner">
+    <div style="text-align:center;">
+      <p class="section-label reveal">People love it</p>
+      <h2 class="section-title reveal reveal-delay-1">What people are bragging about</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial reveal">
+        <div class="stars-row">
+          <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+        </div>
+        <p class="testimonial-text">I used to completely blank at performance review time. Now I pull up <em>Brag.</em> and I have six months of wins, all tagged and ready. It's changed how I think about my own career.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: #F2E8CB;">👩‍💻</div>
+          <div>
+            <div class="author-name">Sarah K.</div>
+            <div class="author-role">Senior Product Designer</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial reveal reveal-delay-1">
+        <div class="stars-row">
+          <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+        </div>
+        <p class="testimonial-text">I use this for everything - runs I'm proud of, moments I showed up as a parent, times I finally did the thing I'd been putting off. The icons make it feel like I'm actually living intentionally.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: #B4D9E2;">🧑‍🎤</div>
+          <div>
+            <div class="author-name">Marcus T.</div>
+            <div class="author-role">Dad, marathon runner</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial reveal reveal-delay-2">
+        <div class="stars-row">
+          <span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span><span>⭐</span>
+        </div>
+        <p class="testimonial-text">I'm a nurse and I started logging small wins at work and at home - a patient interaction I'm proud of, a hard conversation I had, a habit I kept. It's quietly become the most meaningful app on my phone.</p>
+        <div class="testimonial-author">
+          <div class="author-avatar" style="background: #EDBFBF;">👩‍⚕️</div>
+          <div>
+            <div class="author-name">Priya M.</div>
+            <div class="author-role">Nurse</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ──────────────────────────────────────────────────── -->
+<section class="pricing-section" id="pricing">
+  <div class="section-inner">
+    <p class="section-label reveal">Pricing</p>
+    <h2 class="section-title reveal reveal-delay-1">Free in beta, paid at launch</h2>
+    <p class="pricing-trial-note reveal reveal-delay-2"><strong>Beta access is free while testing.</strong> These are the planned launch prices, so you know what to expect later.</p>
+
+    <div class="pricing-cards">
+
+      <div class="pricing-card reveal reveal-delay-1">
+        <div class="pricing-period">Monthly</div>
+        <div class="pricing-amount"><sup>$</sup>3.99<sub>/mo</sub></div>
+        <div class="pricing-equiv">&nbsp;</div>
+        <hr class="pricing-divider" />
+        <ul class="pricing-features">
+          <li>Unlimited win entries</li>
+          <li>AI tagging and icon assignment</li>
+          <li>Weekly insights and recap</li>
+          <li>Brag Sheet export</li>
+          <li>Streaks and notifications</li>
+          <li>Siri and home screen widget</li>
+          <li>CSV import and export</li>
+        </ul>
+        <a href="#download" class="pricing-cta">Ask about beta access</a>
+      </div>
+
+      <div class="pricing-card featured reveal reveal-delay-2">
+        <div class="pricing-badge">Best value</div>
+        <div class="pricing-period">Annual</div>
+        <div class="pricing-amount"><sup>$</sup>29.99<sub>/yr</sub></div>
+        <div class="pricing-equiv">Just $2.50 a month</div>
+        <hr class="pricing-divider" />
+        <ul class="pricing-features">
+          <li>Everything in monthly</li>
+          <li>Save 37% vs monthly</li>
+          <li>Lock in the founding price</li>
+          <li>Cancel any time</li>
+        </ul>
+        <a href="#download" class="pricing-cta">Ask about beta access</a>
+      </div>
+
+    </div>
+    <p class="pricing-guarantee reveal">Beta access first, subscription plans later.</p>
+  </div>
+</section>
+
+<!-- ─── CTA ───────────────────────────────────────────────────────── -->
+<section class="cta-section" id="download">
+  <div class="cta-inner">
+    <p class="section-label reveal">Get the app</p>
+    <h2 class="section-title reveal reveal-delay-1">Start bragging.<br>You've earned it.</h2>
+    <p class="cta-sub reveal reveal-delay-2">
+      Brag is still in beta for iPhone and iPad. Your first win is waiting.
+    </p>
+
+    <div class="cta-icons reveal reveal-delay-2">
+      <div class="cta-icon"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/rocket.svg" alt="rocket" style="width:60%;height:60%;object-fit:contain;"></div>
+      <div class="cta-icon"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/sparkles.svg" alt="sparkles" style="width:60%;height:60%;object-fit:contain;"></div>
+      <div class="cta-icon"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/crown.svg" alt="crown" style="width:60%;height:60%;object-fit:contain;"></div>
+      <div class="cta-icon"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/crystal-ball.svg" alt="crystal-ball" style="width:60%;height:60%;object-fit:contain;"></div>
+      <div class="cta-icon"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/blossom.svg" alt="blossom" style="width:60%;height:60%;object-fit:contain;"></div>
+    </div>
+
+    <a href="mailto:apps.bynicole@gmail.com?subject=Brag%20beta%20access" class="app-store-btn reveal reveal-delay-3">
+      <img src="images/icon.png" alt="Brag app icon" class="app-store-icon" />
+      <div class="app-store-text">
+        <small>iOS beta</small>
+        <strong>Ask about access</strong>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────────── -->
+<footer>
+  <div class="footer-logo"><img src="images/sharelogo.png" alt="Brag" /></div>
+  <div class="footer-links">
+    <a href="https://www.notion.so/Privacy-Policy-Brag-32530612796f81969d3ae22eaa88648c" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+    <a href="https://www.notion.so/Terms-of-Service-Brag-33d30612796f8127ac16fa91d517ab6b" target="_blank" rel="noopener noreferrer">Terms of Service</a>
+    <a href="mailto:apps.bynicole@gmail.com">Support</a>
+  </div>
+  <p class="footer-attribution">
+    Icon credits:
+    <a href="https://www.streamlinehq.com" target="_blank" rel="noopener noreferrer">Streamline Emojis</a> (CC BY 4.0).
+  </p>
+  <p>Made with care. Your wins, somewhere safe.</p>
+</footer>
+
+<!-- ─── SCRIPTS ───────────────────────────────────────────────────── -->
+<script>
+  // ─── Scroll-reveal ───────────────────────────────────────────────
+  const observer = new IntersectionObserver(
+    (entries) => entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    }),
+    { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ─── Nav theme switch ────────────────────────────────────────────
+  const nav = document.getElementById('main-nav');
+  const raritySection = document.querySelector('.rarity-section');
+  const ctaSection = document.querySelector('.cta-section');
+
+  const navObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          nav.classList.add('dark-nav');
+        } else {
+          // Check if we're still inside a dark section
+          const rarityRect = raritySection.getBoundingClientRect();
+          const ctaRect = ctaSection.getBoundingClientRect();
+          if (rarityRect.top < 80 && rarityRect.bottom > 0) return;
+          if (ctaRect.top < 80 && ctaRect.bottom > 0) return;
+          nav.classList.remove('dark-nav');
+        }
+      });
+    },
+    { threshold: 0, rootMargin: '-80px 0px 0px 0px' }
+  );
+  navObserver.observe(raritySection);
+  navObserver.observe(ctaSection);
+
+  // ─── Generate stars ───────────────────────────────────────────────
+  const starsBg = document.getElementById('stars-bg');
+  for (let i = 0; i < 80; i++) {
+    const s = document.createElement('div');
+    s.className = 'star';
+    const size = Math.random() * 2.5 + 0.5;
+    s.style.cssText = `
+      width: ${size}px;
+      height: ${size}px;
+      left: ${Math.random() * 100}%;
+      top: ${Math.random() * 100}%;
+      --d: ${2 + Math.random() * 4}s;
+      --delay: -${Math.random() * 4}s;
+      --min: ${0.05 + Math.random() * 0.2};
+      --max: ${0.4 + Math.random() * 0.6};
+    `;
+    starsBg.appendChild(s);
+  }
+
+  // ─── Showcase icon hover sparkle ─────────────────────────────────
+  document.querySelectorAll('.showcase-icon').forEach(icon => {
+    icon.addEventListener('mouseenter', function() {
+      this.style.boxShadow = this.classList.contains('special')
+        ? '0 0 20px rgba(200,160,80,0.5)'
+        : '0 0 16px rgba(255,255,255,0.15)';
+    });
+    icon.addEventListener('mouseleave', function() {
+      this.style.boxShadow = '';
+    });
+  });
+
+  // ─── Smooth active section tracking ──────────────────────────────
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          navLinks.forEach(link => {
+            link.style.opacity = link.getAttribute('href') === '#' + e.target.id ? '1' : '0.7';
+          });
+        }
+      });
+    },
+    { threshold: 0.4 }
+  );
+  sections.forEach(s => sectionObserver.observe(s));
+</script>
+</body>
+</html>
