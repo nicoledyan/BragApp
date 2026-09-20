@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://bragbag.app/</loc></url>
-  <url><loc>https://bragbag.app/track-your-wins/</loc></url>
-  <url><loc>https://bragbag.app/performance-review-accomplishments/</loc></url>
-  <url><loc>https://bragbag.app/brag-book/</loc></url>
-  <url><loc>https://bragbag.app/support/</loc></url>
-  <url><loc>https://bragbag.app/privacy/</loc></url>
-  <url><loc>https://bragbag.app/terms/</loc></url>
+  <url><loc>https://bragbag.app/</loc><lastmod>2026-09-20</lastmod></url>
+  <url><loc>https://bragbag.app/track-your-wins/</loc><lastmod>2026-09-20</lastmod></url>
+  <url><loc>https://bragbag.app/performance-review-accomplishments/</loc><lastmod>2026-09-20</lastmod></url>
+  <url><loc>https://bragbag.app/brag-book/</loc><lastmod>2026-09-20</lastmod></url>
+  <url><loc>https://bragbag.app/support/</loc><lastmod>2026-08-17</lastmod></url>
+  <url><loc>https://bragbag.app/privacy/</loc><lastmod>2026-08-17</lastmod></url>
+  <url><loc>https://bragbag.app/terms/</loc><lastmod>2026-08-17</lastmod></url>
 </urlset>

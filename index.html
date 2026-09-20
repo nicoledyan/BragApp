@@ -10,32 +10,74 @@
   <meta property="og:site_name" content="Brag" />
   <meta property="og:url" content="https://bragbag.app/" />
   <meta property="og:title" content="Brag. Your wins deserve to be remembered" />
-  <meta property="og:description" content="A place to keep the things you're proud of." />
+  <meta property="og:description" content="A private productivity app and digital brag book for tracking personal wins, work accomplishments, and performance-review evidence." />
   <meta property="og:image" content="https://bragbag.app/images/social-share.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Brag. Your wins deserve to be remembered." />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Brag. Your wins deserve to be remembered" />
-  <meta name="twitter:description" content="A place to keep the things you're proud of." />
+  <meta name="twitter:description" content="A private productivity app and digital brag book for tracking personal wins, work accomplishments, and performance-review evidence." />
   <meta name="twitter:image" content="https://bragbag.app/images/social-share.png" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "MobileApplication",
-    "name": "BRAG",
-    "url": "https://bragbag.app/",
-    "description": "A private wins tracker for saving personal and career accomplishments, noticing progress, and preparing for performance reviews.",
-    "operatingSystem": "iOS, iPadOS",
-    "applicationCategory": "LifestyleApplication",
-    "image": "https://bragbag.app/images/icon.png",
-    "downloadUrl": "https://apps.apple.com/us/app/brag/id6760629486",
-    "installUrl": "https://apps.apple.com/us/app/brag/id6760629486",
-    "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "USD"
-    }
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://bragbag.app/#website",
+        "url": "https://bragbag.app/",
+        "name": "BRAG",
+        "description": "A private productivity app and digital brag book for tracking personal wins and work accomplishments."
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://bragbag.app/#organization",
+        "name": "BRAG",
+        "url": "https://bragbag.app/",
+        "logo": "https://bragbag.app/images/icon.png",
+        "sameAs": ["https://apps.apple.com/us/app/brag/id6760629486"]
+      },
+      {
+        "@type": "MobileApplication",
+        "@id": "https://bragbag.app/#app",
+        "name": "BRAG",
+        "alternateName": "Brag.",
+        "url": "https://bragbag.app/",
+        "description": "A private wins tracker for saving personal and career accomplishments, noticing progress, and preparing for performance reviews.",
+        "operatingSystem": "iOS 16.4 or later, iPadOS 16.4 or later",
+        "applicationCategory": "LifestyleApplication",
+        "image": "https://bragbag.app/images/icon.png",
+        "screenshot": [
+          "https://bragbag.app/images/brag-bag-screen.jpeg",
+          "https://bragbag.app/images/brag-book-screen.jpeg"
+        ],
+        "featureList": [
+          "Track personal and career wins",
+          "Build a digital brag book",
+          "Reflect on patterns and progress",
+          "Prepare an editable performance-review brag sheet"
+        ],
+        "identifier": "id6760629486",
+        "downloadUrl": "https://apps.apple.com/us/app/brag/id6760629486",
+        "installUrl": "https://apps.apple.com/us/app/brag/id6760629486",
+        "sameAs": "https://apps.apple.com/us/app/brag/id6760629486",
+        "publisher": { "@id": "https://bragbag.app/#organization" },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": "5.0",
+          "bestRating": "5",
+          "ratingCount": "3"
+        },
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD",
+          "availability": "https://schema.org/InStock",
+          "url": "https://apps.apple.com/us/app/brag/id6760629486"
+        }
+      }
+    ]
   }
   </script>
   <link rel="icon" type="image/png" href="images/icon.png" />
@@ -246,13 +288,13 @@
     }
 
     .hero-subtitle {
-      font-size: clamp(17px, 2vw, 21px);
-      font-weight: 300;
+      font-size: clamp(14px, 1.45vw, 16px);
+      font-weight: 400;
       color: var(--forest);
-      opacity: 0.7;
-      max-width: 560px;
-      line-height: 1.6;
-      margin-bottom: 30px;
+      opacity: 0.66;
+      max-width: 600px;
+      line-height: 1.5;
+      margin-bottom: 24px;
       animation: fadeUp 0.8s ease 0.2s both;
     }
 
@@ -507,24 +549,26 @@
 
     /* ─── FEATURES ─────────────────────────────────────────────────── */
     .features-section {
-      padding: 120px 0;
+      padding: 92px 0;
       background: linear-gradient(180deg, var(--cream) 0%, var(--warm) 100%);
     }
     .features-title-row {
       text-align: center;
-      margin-bottom: 80px;
+      margin-bottom: 46px;
     }
     .feature-cards {
       display: grid;
-      grid-template-columns: minmax(0, 720px);
-      justify-content: center;
-      gap: 24px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      align-items: stretch;
     }
     .feature-card {
+      display: flex;
+      flex-direction: column;
       background: rgba(255,255,255,0.7);
       backdrop-filter: blur(10px);
       border-radius: 24px;
-      padding: 36px 28px;
+      padding: 30px 26px;
       border: 1.5px solid rgba(237,191,191,0.3);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
@@ -541,8 +585,15 @@
       transform: translateY(-6px);
       box-shadow: 0 20px 60px rgba(0,0,0,0.08);
     }
-    .feature-card.tall { grid-row: span 2; }
-    .feature-emoji { font-size: 36px; margin-bottom: 16px; display: block; }
+    .feature-emoji { font-size: 32px; margin-bottom: 14px; display: block; }
+    .feature-kicker {
+      margin-bottom: 8px;
+      color: var(--rose);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
     .feature-name {
       font-family: 'Fraunces', serif;
       font-size: 22px;
@@ -551,11 +602,28 @@
       color: var(--forest);
     }
     .feature-desc {
-      font-size: 15px;
-      line-height: 1.6;
+      font-size: 14px;
+      line-height: 1.55;
       color: var(--forest);
       opacity: 0.65;
     }
+    .feature-list {
+      display: grid;
+      gap: 10px;
+      margin: 24px 0 0;
+      padding: 18px 0 0;
+      border-top: 1px solid rgba(30,48,30,0.1);
+      list-style: none;
+    }
+    .feature-list li {
+      display: flex;
+      gap: 9px;
+      align-items: flex-start;
+      color: rgba(30,48,30,0.72);
+      font-size: 13px;
+      line-height: 1.4;
+    }
+    .feature-list li::before { color: var(--teal); content: '✓'; font-weight: 700; }
 
     /* big feature highlight */
     .feature-card.highlight {
@@ -564,8 +632,13 @@
       color: white;
     }
     .feature-card.highlight .feature-name,
-    .feature-card.highlight .feature-desc { color: white; }
+    .feature-card.highlight .feature-desc,
+    .feature-card.highlight .feature-kicker { color: white; }
     .feature-card.highlight .feature-desc { opacity: 0.7; }
+    .feature-card.highlight .feature-kicker { opacity: 0.58; }
+    .feature-card.highlight .feature-list { border-color: rgba(255,255,255,0.12); }
+    .feature-card.highlight .feature-list li { color: rgba(255,255,255,0.72); }
+    .feature-card.highlight .feature-list li::before { color: var(--gold); }
     .feature-card.highlight::before {
       background: linear-gradient(135deg, rgba(200,160,80,0.15) 0%, transparent 60%);
     }
@@ -776,19 +849,34 @@
       background: linear-gradient(180deg, var(--cream) 0%, #F2E8CB 100%);
     }
     .testimonials-section .section-title { font-size: clamp(34px, 5vw, 52px); }
-    .testimonials-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 640px);
-      justify-content: center;
-      margin-top: 38px;
+    .testimonials-section .section-subtitle {
+      margin-top: 10px;
+      color: rgba(30,48,30,0.58);
+      font-size: 14px;
     }
+    .testimonials-grid {
+      display: flex;
+      gap: 18px;
+      margin-top: 38px;
+      padding: 4px 2px 18px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      overscroll-behavior-x: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+    .testimonials-grid::-webkit-scrollbar { display: none; }
     .testimonial {
+      flex: 0 0 min(520px, calc(100% - 72px));
       background: rgba(255,255,255,0.68);
       border-radius: 28px;
       padding: clamp(28px, 5vw, 42px);
       border: 1px solid rgba(196,144,144,0.22);
       position: relative;
       text-align: center;
+      scroll-snap-align: center;
+      scroll-snap-stop: always;
     }
     .testimonial::before { display: none; }
     .review-title {
@@ -840,6 +928,40 @@
       text-decoration: none;
     }
     .testimonial-source:hover { color: var(--teal); }
+    .testimonial-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .testimonial-arrow {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(30,48,30,0.16);
+      border-radius: 50%;
+      background: rgba(255,255,255,0.72);
+      color: var(--forest);
+      font: inherit;
+      font-size: 20px;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease, opacity 0.2s ease;
+    }
+    .testimonial-arrow:hover:not(:disabled) { transform: translateY(-2px); background: #fff; }
+    .testimonial-arrow:focus-visible { outline: 3px solid rgba(17,122,101,0.3); outline-offset: 3px; }
+    .testimonial-arrow:disabled { opacity: 0.35; cursor: default; }
+    .testimonial-dots { display: flex; gap: 8px; }
+    .testimonial-dot {
+      width: 8px;
+      height: 8px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: rgba(30,48,30,0.22);
+      cursor: pointer;
+      transition: width 0.2s ease, background 0.2s ease;
+    }
+    .testimonial-dot.active { width: 24px; border-radius: 8px; background: var(--teal); }
 
     /* ─── GUIDES ─────────────────────────────────────────────── */
     .guides-section { padding: 76px 24px 82px; background: var(--cream); }
@@ -1184,16 +1306,25 @@
       .why-grid, .rarity-inner { grid-template-columns: 1fr; gap: 40px; }
       .why-content { padding-left: 0; }
       .feature-cards { grid-template-columns: 1fr; }
-      .feature-card.tall { grid-row: span 1; }
       .steps { grid-template-columns: 1fr 1fr; }
       .step::after { display: none; }
-      .testimonials-grid, .guides-grid { grid-template-columns: 1fr; }
+      .guides-grid { grid-template-columns: 1fr; }
       .hero-product { width: min(240px, 78vw); }
       .hero-note { left: -20px; bottom: 52px; transform: scale(0.9); }
       .hero-note.right { right: -22px; top: 78px; }
     }
     @media (max-width: 480px) {
       .steps { grid-template-columns: 1fr; }
+      .hero-subtitle {
+        max-width: 315px;
+        font-size: 13px;
+        line-height: 1.45;
+        margin-bottom: 20px;
+      }
+      .testimonials-section { padding-inline: 0; }
+      .testimonials-section .section-inner > div:first-child { padding-inline: 24px; }
+      .testimonials-grid { padding-left: 24px; padding-right: 24px; scroll-padding-inline: 24px; }
+      .testimonial { flex-basis: calc(100vw - 64px); }
     }
   </style>
 </head>
@@ -1232,7 +1363,7 @@
   </h1>
 
   <p class="hero-subtitle">
-    <em>Brag.</em> a tiny place to keep track of what you did, handled, finished, and moved forward. Log wins big and small, choose icons, and build a record you can come back to.
+    <em>BRAG</em> is a private productivity app and digital brag book for tracking personal wins, work accomplishments, and the moments you want to remember. Log wins big and small, choose icons, and build a record you can come back to.
   </p>
 
   <div class="hero-actions">
@@ -1318,19 +1449,24 @@
     </div>
 
     <div class="feature-cards">
+      <article class="feature-card reveal">
+        <span class="feature-emoji">✍️</span>
+        <p class="feature-kicker">Capture</p>
+        <h3 class="feature-name">Save it while it’s fresh</h3>
+        <p class="feature-desc">Write a win naturally and keep moving. BRAG makes the habit quick enough for everyday life.</p>
+        <ul class="feature-list">
+          <li>Pro smart tags, categories, and icon matching</li>
+          <li>Pro Siri shortcut for hands-free entries</li>
+          <li>Streaks and a gentle daily reminder</li>
+          <li>Pro CSV import for wins you already saved</li>
+        </ul>
+      </article>
 
-      <!-- AI tagging -->
-      <div class="feature-card reveal">
-        <span class="feature-emoji">✨</span>
-        <h3 class="feature-name">Pro smart tagging</h3>
-        <p class="feature-desc">Type your win the way you'd say it to a friend. With Pro, <em>Brag</em>'s AI suggests skills, categories, and themes connected to it.</p>
-      </div>
-
-      <!-- Brag Bag collect -->
-      <div class="feature-card highlight tall reveal reveal-delay-1">
+      <article class="feature-card highlight reveal reveal-delay-1">
         <span class="feature-emoji">🛍️</span>
-        <h3 class="feature-name">Your Brag Bag</h3>
-        <p class="feature-desc">Give each saved win an icon. Choose one yourself, or let Pro match one for you.</p>
+        <p class="feature-kicker">Collect</p>
+        <h3 class="feature-name">Watch your Brag Bag grow</h3>
+        <p class="feature-desc">Give each win an icon and turn scattered moments into a collection you’ll want to revisit.</p>
         <div class="mini-bag">
           <div class="mini-icon"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/rocket.svg" alt="rocket" style="width:24px;height:24px;object-fit:contain;"></div>
           <div class="mini-icon special"><img src="https://exeatjvcdbaufroivxho.supabase.co/storage/v1/object/public/icons/streamline/crown.svg" alt="crown" style="width:24px;height:24px;object-fit:contain;"></div>
@@ -1347,50 +1483,24 @@
           <div class="rarity-dot"><div class="d common"></div> Common icons</div>
           <div class="rarity-dot"><div class="d special"></div> Special icons</div>
         </div>
-      </div>
+        <ul class="feature-list">
+          <li>Choose an icon or let Pro find one</li>
+          <li>See a recent win on your home screen widget</li>
+        </ul>
+      </article>
 
-      <!-- Insights -->
-      <div class="feature-card reveal reveal-delay-2">
+      <article class="feature-card reveal reveal-delay-2">
         <span class="feature-emoji">🌱</span>
-        <h3 class="feature-name">Pro weekly insights</h3>
-        <p class="feature-desc">Start a trial to open the full Friday letter, deeper patterns, and the strengths that are easy to miss while you are doing the work.</p>
-      </div>
-
-      <!-- Performance review -->
-      <div class="feature-card reveal reveal-delay-3">
-        <span class="feature-emoji">📝</span>
-        <h3 class="feature-name">Pro Brag Sheet</h3>
-        <p class="feature-desc">Turn your wins into talking points for performance reviews, 1:1s, interviews, or the days you need your impact in front of you.</p>
-      </div>
-
-      <!-- Streak + notifications -->
-      <div class="feature-card reveal reveal-delay-1">
-        <span class="feature-emoji">🔥</span>
-        <h3 class="feature-name">Streaks and nudges</h3>
-        <p class="feature-desc">Build the habit with streak tracking and a daily reminder to save what happened before you forget.</p>
-      </div>
-
-      <!-- Import -->
-      <div class="feature-card reveal reveal-delay-2">
-        <span class="feature-emoji">📥</span>
-        <h3 class="feature-name">Pro import and export</h3>
-        <p class="feature-desc">Already keeping wins in a spreadsheet? Bring them with you, then export your saved wins when you need them somewhere else.</p>
-      </div>
-
-      <!-- Siri -->
-      <div class="feature-card reveal reveal-delay-3">
-        <span class="feature-emoji">🎙️</span>
-        <h3 class="feature-name">Pro Siri shortcut</h3>
-        <p class="feature-desc">Hands full? Pro lets you set up Siri so you can say the win out loud without stopping what you're doing.</p>
-      </div>
-
-      <!-- Widget -->
-      <div class="feature-card reveal reveal-delay-4">
-        <span class="feature-emoji">📱</span>
-        <h3 class="feature-name">Home screen widget</h3>
-        <p class="feature-desc">Put a recent win on your home screen so it can catch your eye during the day.</p>
-      </div>
-
+        <p class="feature-kicker">Reflect</p>
+        <h3 class="feature-name">Use what you saved</h3>
+        <p class="feature-desc">Come back for perspective, encouragement, or the evidence you need to explain your impact.</p>
+        <ul class="feature-list">
+          <li>Pro Friday letters and weekly insights</li>
+          <li>Patterns and strengths across your wins</li>
+          <li>Pro Brag Sheets for reviews, 1:1s, and interviews</li>
+          <li>Pro CSV export when you need your wins elsewhere</li>
+        </ul>
+      </article>
     </div>
   </div>
 </section>
@@ -1481,20 +1591,46 @@
 <section class="testimonials-section" id="reviews">
   <div class="section-inner">
     <div style="text-align:center;">
-      <p class="section-label reveal">A BRAG user</p>
+      <p class="section-label reveal">Loved by BRAG users</p>
       <h2 class="section-title reveal reveal-delay-1">From the App Store</h2>
+      <p class="section-subtitle reveal reveal-delay-2">5.0 out of 5 from 3 ratings</p>
     </div>
-    <div class="testimonials-grid">
-      <div class="testimonial reveal">
+    <div class="testimonials-grid reveal" id="testimonial-carousel" role="region" aria-label="App Store reviews" tabindex="0">
+      <article class="testimonial">
+        <div class="stars-row" aria-label="5 out of 5 stars">★★★★★</div>
+        <h3 class="review-title">I truly love this app!</h3>
+        <p class="testimonial-text">“This is by far my favorite app right now! It’s such a fun way to remind yourself to celebrate all the wins, big or small. I especially love to use this app in my own meditation practice by going back to reflect on the wins and practice gratitude.”</p>
+        <div class="testimonial-author">
+          <span class="author-name">whimsymir</span>
+          <span aria-hidden="true">·</span>
+          <a class="testimonial-source" href="https://apps.apple.com/us/app/brag/id6760629486" target="_blank" rel="noopener noreferrer">App Store review</a>
+        </div>
+      </article>
+      <article class="testimonial">
+        <div class="stars-row" aria-label="5 out of 5 stars">★★★★★</div>
+        <h3 class="review-title">It’s official!!!!</h3>
+        <p class="testimonial-text">“I used it to capture everyday wins, look back on meaningful milestones, and recognize my growth over time. The reflection feature is especially motivating—it reminds me that even small moments matter.”</p>
+        <div class="testimonial-author">
+          <span class="author-name">Leon P.</span>
+          <span aria-hidden="true">·</span>
+          <a class="testimonial-source" href="https://apps.apple.com/us/app/brag/id6760629486" target="_blank" rel="noopener noreferrer">App Store review</a>
+        </div>
+      </article>
+      <article class="testimonial">
         <div class="stars-row" aria-label="5 out of 5 stars">★★★★★</div>
         <h3 class="review-title">Brag about it</h3>
-        <p class="testimonial-text">“This app super cute and helps you remember and reflect on all your achievements, big and small.”</p>
+        <p class="testimonial-text">“This app super cute and helps you remember and reflect on all your achievements, big and small. The brag bag is fun to shake and watch all your brags tumble around. Nice work!”</p>
         <div class="testimonial-author">
           <span class="author-name">LEGION INC</span>
           <span aria-hidden="true">·</span>
           <a class="testimonial-source" href="https://apps.apple.com/us/app/brag/id6760629486" target="_blank" rel="noopener noreferrer">App Store review</a>
         </div>
-      </div>
+      </article>
+    </div>
+    <div class="testimonial-controls reveal" aria-label="Review carousel controls">
+      <button class="testimonial-arrow testimonial-prev" type="button" aria-label="Previous review">←</button>
+      <div class="testimonial-dots" aria-label="Choose a review"></div>
+      <button class="testimonial-arrow testimonial-next" type="button" aria-label="Next review">→</button>
     </div>
   </div>
 </section>
@@ -1705,6 +1841,68 @@
       this.style.boxShadow = '';
     });
   });
+
+  // ─── App Store review carousel ───────────────────────────────────
+  const testimonialCarousel = document.getElementById('testimonial-carousel');
+  const testimonialCards = [...testimonialCarousel.querySelectorAll('.testimonial')];
+  const testimonialPrev = document.querySelector('.testimonial-prev');
+  const testimonialNext = document.querySelector('.testimonial-next');
+  const testimonialDots = document.querySelector('.testimonial-dots');
+  let activeTestimonial = 0;
+
+  testimonialCards.forEach((card, index) => {
+    const dot = document.createElement('button');
+    dot.className = 'testimonial-dot';
+    dot.type = 'button';
+    dot.setAttribute('aria-label', `Show review ${index + 1}`);
+    dot.addEventListener('click', () => scrollToTestimonial(index));
+    testimonialDots.appendChild(dot);
+  });
+
+  function setActiveTestimonial(index) {
+    activeTestimonial = index;
+    [...testimonialDots.children].forEach((dot, dotIndex) => {
+      const isActive = dotIndex === index;
+      dot.classList.toggle('active', isActive);
+      dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+    });
+    testimonialPrev.disabled = index === 0;
+    testimonialNext.disabled = index === testimonialCards.length - 1;
+  }
+
+  function scrollToTestimonial(index) {
+    testimonialCards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+  }
+
+  testimonialPrev.addEventListener('click', () => scrollToTestimonial(Math.max(0, activeTestimonial - 1)));
+  testimonialNext.addEventListener('click', () => scrollToTestimonial(Math.min(testimonialCards.length - 1, activeTestimonial + 1)));
+
+  testimonialCarousel.addEventListener('keydown', (event) => {
+    if (event.key === 'ArrowLeft') {
+      event.preventDefault();
+      scrollToTestimonial(Math.max(0, activeTestimonial - 1));
+    }
+    if (event.key === 'ArrowRight') {
+      event.preventDefault();
+      scrollToTestimonial(Math.min(testimonialCards.length - 1, activeTestimonial + 1));
+    }
+  });
+
+  let testimonialScrollFrame;
+  testimonialCarousel.addEventListener('scroll', () => {
+    cancelAnimationFrame(testimonialScrollFrame);
+    testimonialScrollFrame = requestAnimationFrame(() => {
+      const carouselCenter = testimonialCarousel.getBoundingClientRect().left + testimonialCarousel.clientWidth / 2;
+      const closestIndex = testimonialCards.reduce((closest, card, index) => {
+        const rect = card.getBoundingClientRect();
+        const distance = Math.abs(rect.left + rect.width / 2 - carouselCenter);
+        return distance < closest.distance ? { index, distance } : closest;
+      }, { index: 0, distance: Infinity }).index;
+      setActiveTestimonial(closestIndex);
+    });
+  }, { passive: true });
+
+  setActiveTestimonial(0);
 
   // ─── Smooth active section tracking ──────────────────────────────
   const sections = document.querySelectorAll('section[id]');
